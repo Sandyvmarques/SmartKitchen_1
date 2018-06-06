@@ -22,8 +22,8 @@ namespace SmartKitchen_1.Models
         ErrorMessage = "The {0} can only contain leters and spaces.Ex: Louis Jack")]
         public string NomeCliente { get; set; }
         [Required(ErrorMessage = "The {0} is required.")]
-        [RegularExpression("9[123456][0 - 9] {7}",
-        ErrorMessage = "The {0} can only contain numbers ")]
+        //[RegularExpression("9[123456][0 - 9] {7}",
+        //ErrorMessage = "The {0} can only contain numbers ")]
         public int Contacto { get; set; }
         [Required]
         public string Morada { get; set; }

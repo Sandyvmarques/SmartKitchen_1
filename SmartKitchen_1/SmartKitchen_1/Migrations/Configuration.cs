@@ -4,21 +4,24 @@ namespace SmartKitchen_1.Migrations
 	using System;
 	using System.Collections.Generic;
 	using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+	using System.Data.Entity.Migrations;
+	using System.Data.Entity.Validation;
+	using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SmartKitchen_1.Models.SmartKitchen1Db>
-    {
-        public Configuration()
-        {
-            AutomaticMigrationsEnabled = true;
-        }
+	internal sealed class Configuration : DbMigrationsConfiguration<SmartKitchen_1.Models.SmartKitchen1Db>
+	{
+		public Configuration()
+		{
+			AutomaticMigrationsEnabled = true;
+		}
 
-        protected override void Seed(SmartKitchen_1.Models.SmartKitchen1Db context)
-        {
+		protected override void Seed(SmartKitchen_1.Models.SmartKitchen1Db context)
+		{
 			//*****************************************************************************************************************************
 			// adiciona Clientes
-			var Cliente = new List<Clientes> {
+			//try
+			//{
+				var Cliente = new List<Clientes> {
 				new Clientes {Cliente_ID=1, NomeCliente="Susana Marta", Contacto=912637284, CodigoPostal="3003-313",Morada="Rua da Liberdade", Email="susMart@mail.com",Username="susMart",Password="1AssdABHN2"},
 				new Clientes {Cliente_ID=2, NomeCliente="Maria Marques", Contacto=917263284,  CodigoPostal="1542-170",Morada="Rua do Centro Republicano", Email="mariaMarq@mail.com",Username="mariaMarq",Password="AD2483mdfn9"},
 				new Clientes {Cliente_ID=3, NomeCliente="Pedro Silva", Contacto=96284327, CodigoPostal="4785-150",  Morada="Rua de Marte", Email="pedroSilv@mail.com",Username="pedroSilv",Password="12MDndj9384"},
@@ -26,22 +29,22 @@ namespace SmartKitchen_1.Migrations
 				new Clientes {Cliente_ID=5, NomeCliente="Rute Roque", Contacto=916342728, CodigoPostal="1240-102",  Morada="Avenida 25 de Abril", Email="Rutxi@mail.com",Username="Rutxi",Password="238njf3DJ"},
 				new Clientes {Cliente_ID=6, NomeCliente="Zé Manel", Contacto=911272634, CodigoPostal="2040-112", Morada="Rua Garrett", Email="Zeca@mail.com",Username="Zeca",Password="24984NJDFJn"}
 			};
-			Cliente.ForEach(cc => context.Clientes.AddOrUpdate(c => c.NomeCliente, cc));
-			context.SaveChanges();
+				Cliente.ForEach(cc => context.Clientes.AddOrUpdate(c => c.NomeCliente, cc));
+				context.SaveChanges();
 
-			//*****************************************************************************************************************************
-			// Adiciona as 3 Categorias
-			var Categorias = new List<Categorias> {
+				//*****************************************************************************************************************************
+				// Adiciona as 3 Categorias
+				var Categorias = new List<Categorias> {
 				new Categorias {Cat_ID=1, NomeCateg="Baking Tools & Gadgets", Icon="BakingTools&Gadgets.jpg" },
 				new Categorias {Cat_ID=2, NomeCateg="Kitchen Tools", Icon="KitchenTools.jpg"},
 				new Categorias {Cat_ID=3, NomeCateg="Cooking Gadgets", Icon="CookingGadgets.jpg"},
 			 };
-			Categorias.ForEach(cc => context.Categorias.AddOrUpdate(c => c.NomeCateg, cc));
-			context.SaveChanges();
+				Categorias.ForEach(cc => context.Categorias.AddOrUpdate(c => c.NomeCateg, cc));
+				context.SaveChanges();
 
-			//*****************************************************************************************************************************
-			// adiciona os Produtos (10 produtos p/ cada Categoria)
-			var produtos = new List<Produtos> {
+				//*****************************************************************************************************************************
+				// adiciona os Produtos (10 produtos p/ cada Categoria)
+				var produtos = new List<Produtos> {
 	                                                      /*Utensílios e Gadgets de Patelaria*/
                 new Produtos {Prod_ID=1, NomeProduto="OXO", CategoriasFK=1,PrecoVenda=12.99M,IVAVenda=23,Stock=10,Descricao="Imagine a world where 450 Degree truly means 450 Degree. An accurate thermometer is a must for safe and precise oven cooking, " +
 				"baking, roasting and braising, but our pet peeve when using them is that they simply don't stay put. We created our chef's precision oven thermometer to stay securely in place in a wide range of ovens (we tested it in over 50 different models to be sure) " +
@@ -131,11 +134,11 @@ namespace SmartKitchen_1.Migrations
 				" the perfect pizza environment of a brick oven, using convection, conduction, and reflected heat to create even cooking temperatures. This ensures crisp, evenly cooked, delicious homemade pizzas that are cooked from the bottom up the way they are supposed to." +
 				" Built to the highest quality standards that Cuisinart is famous for. "},
 			};
-			produtos.ForEach(vv => context.Produtos.AddOrUpdate(v => v.NomeProduto, vv));
-			context.SaveChanges();
-			//*****************************************************************************************************************************
-			// adiciona  max 3 Imagens por cada Produto 
-			var Imagem = new List<Imagens> {
+				produtos.ForEach(vv => context.Produtos.AddOrUpdate(v => v.NomeProduto, vv));
+				context.SaveChanges();
+				//*****************************************************************************************************************************
+				// adiciona  max 3 Imagens por cada Produto 
+				var Imagem = new List<Imagens> {
                 /*Utensílios e Gadgets de Patelaria*/
                 new Imagens {Imagem_ID=11, Img="OXO.jpg",Ordem="",Produto=produtos[0]},
 				new Imagens {Imagem_ID=12, Img="OXO2.jpg",Ordem="",Produto=produtos[0]},
@@ -212,11 +215,11 @@ namespace SmartKitchen_1.Migrations
 				new Imagens {Imagem_ID=58, Img="OutdoorPizzaOven3.jpg", Ordem="",Produto=produtos[29]},
 
 			 };
-			Imagem.ForEach(cc => context.Imagens.AddOrUpdate(c => c.Imagem_ID, cc));
-			context.SaveChanges();
-			//*****************************************************************************************************************************
-			// adiciona Encomendas 
-			var Encomenda = new List<Encomendas> {
+				Imagem.ForEach(cc => context.Imagens.AddOrUpdate(c => c.Imagem_ID, cc));
+				context.SaveChanges();
+				//*****************************************************************************************************************************
+				// adiciona Encomendas 
+				var Encomenda = new List<Encomendas> {
 				new Encomendas {Encomenda_ID=1, DataVenda=new DateTime(2018,12,15), ClienteFK=1, PrecoTotal=36.45M},
 				new Encomendas {Encomenda_ID=2, DataVenda=new DateTime(2018,5,25), ClienteFK=2, PrecoTotal= 4.99M},
 				new Encomendas {Encomenda_ID=3, DataVenda=new DateTime(2018,10,2), ClienteFK=3, PrecoTotal= 43.98M},
@@ -224,11 +227,11 @@ namespace SmartKitchen_1.Migrations
 				new Encomendas {Encomenda_ID=5, DataVenda=new DateTime(2018,11,30), ClienteFK=5, PrecoTotal=52.27M},
 				new Encomendas {Encomenda_ID=6, DataVenda=new DateTime(2018,2,12), ClienteFK=6, PrecoTotal= 5.99M}
 			};
-			Encomenda.ForEach(cc => context.Encomendas.AddOrUpdate(c => c.DataVenda, cc));
-			context.SaveChanges();
-			//*****************************************************************************************************************************
-			//ligação entre as encomendas e os produtos comprados 
-			var EncomendaProduto = new List<EncProd> {
+				Encomenda.ForEach(cc => context.Encomendas.AddOrUpdate(c => c.DataVenda, cc));
+				context.SaveChanges();
+				//*****************************************************************************************************************************
+				//ligação entre as encomendas e os produtos comprados 
+				var EncomendaProduto = new List<EncProd> {
 				new EncProd {EncomendasFK=1, Produto=produtos[1], QuantidVendida=3, PrecoCompra=11.99M,IVA_Compra=23},
 				new EncProd {EncomendasFK=1, Produto=produtos[29], QuantidVendida=23, PrecoCompra=5.00M,IVA_Compra=23},
 				new EncProd {EncomendasFK=1, Produto=produtos[23], QuantidVendida=30, PrecoCompra=5.47M,IVA_Compra=23},
@@ -245,8 +248,20 @@ namespace SmartKitchen_1.Migrations
 				new EncProd {EncomendasFK=5, Produto=produtos[3], QuantidVendida=4, PrecoCompra=2.28M,IVA_Compra=23},
 				new EncProd {EncomendasFK=6, Produto=produtos[12], QuantidVendida=5, PrecoCompra=5.99M,IVA_Compra=23 }
 			 };
-			EncomendaProduto.ForEach(cc => context.EncProd.AddOrUpdate(c => c.EncomendasFK, cc));
-			context.SaveChanges();
+				EncomendaProduto.ForEach(cc => context.EncProd.AddOrUpdate(c => c.EncomendasFK, cc));
+				context.SaveChanges();
+
+			//}
+			//catch (DbEntityValidationException ex)
+			//{
+			//	var erros = ex.EntityValidationErrors
+			//		.SelectMany(e => e.ValidationErrors)
+			//		.Select(x => "Campo: " + x.PropertyName + " -> " + x.ErrorMessage);
+
+			//	var mensagem = string.Join("\n", erros);
+
+			//	throw new Exception(mensagem);
+			//}
 		}
 	}
 }

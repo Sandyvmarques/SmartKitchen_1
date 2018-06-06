@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -18,7 +19,7 @@ namespace SmartKitchen_1.Controllers
         // GET: Produtos
         public ActionResult Index()
         {
-            //var produtos = db.Produtos.Include(p => p.Categoria);
+            //var produto = db.Produtos.Include(p => p.Categoria);
             return View(db.Produtos.ToList());
         }
 
@@ -49,17 +50,41 @@ namespace SmartKitchen_1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Prod_ID,NomeProduto,Descricao,IVAVenda,PrecoVenda,Stock,CategoriasFK")] Produtos produtos)
+        public ActionResult Create([Bind(Include = "Prod_ID,NomeProduto,Descricao,IVAVenda,PrecoVenda,Stock,CategoriasFK")] Produtos produto, HttpPostedFileBase[] Uploadimagens)//para ter multiplas imagens faco um array e um ciclo for para ir buscar cada imagem. uma coisa q o vs faz por ti ex: produto.imgem.caminho
         {
-            if (ModelState.IsValid)
+			//foreach (Uploadimagens=) {
+			//	//ID do novo produto 
+			//	int idNovoPoduto = db.Produtos.Max(a => a.Prod_ID) + 1;
+			//	//guarda o ID
+			//	produto.Prod_ID = idNovoPoduto;
+
+			//	//escolher o nome do ficheiro 
+			//	string nomeImg = "Produto_" + idNovoPoduto + ".jpg";
+
+			//	//var auxiliar
+			//	string path = "";
+
+			//	//validar se a img foi fornecida
+			//	if (Uploadimagens != null)
+			//	{
+			//		path = Path.Combine(Server.MapPath("~/imagens/"), nomeImg);
+			//		produto.ListaDeImagens = nomeImg;
+			//	}
+			//	else {
+			//		ModelState.AddModelError("", "No imagem");
+
+			//		return View(produto);
+			//	}
+			//}
+				if (ModelState.IsValid)
             {
-                db.Produtos.Add(produtos);
+                db.Produtos.Add(produto);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            //ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produtos.CategoriasFK);
-            return View(produtos);
+            //ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produto.CategoriasFK);
+            return View(produto);
         }
 
         // GET: Produtos/Edit/5
@@ -74,7 +99,7 @@ namespace SmartKitchen_1.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produtos.CategoriasFK);
+            //ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produto.CategoriasFK);
             return View(produtos);
         }
 
@@ -91,7 +116,7 @@ namespace SmartKitchen_1.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            //ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produtos.CategoriasFK);
+            //ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produto.CategoriasFK);
             return View(produtos);
         }
 
