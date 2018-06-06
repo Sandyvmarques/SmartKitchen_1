@@ -18,7 +18,7 @@ namespace SmartKitchen_1.Controllers
         // GET: Produtos
         public ActionResult Index()
         {
-            //var produtos = db.Produtos.Include(p => p.Categoria);
+            //var produto = db.Produtos.Include(p => p.Categoria);
             return View(db.Produtos.ToList());
         }
 
@@ -58,7 +58,7 @@ namespace SmartKitchen_1.Controllers
                 return RedirectToAction("Index");
             }
 
-            //ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produtos.CategoriasFK);
+            //ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produto.CategoriasFK);
             return View(produtos);
         }
 
@@ -74,7 +74,7 @@ namespace SmartKitchen_1.Controllers
             {
 				return RedirectToAction("Index");
 			}
-			//ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produtos.CategoriasFK);
+			//ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produto.CategoriasFK);
 			return View(produtos);
         }
 
@@ -91,7 +91,7 @@ namespace SmartKitchen_1.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            //ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produtos.CategoriasFK);
+            //ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produto.CategoriasFK);
             return View(produtos);
         }
 
@@ -115,10 +115,18 @@ namespace SmartKitchen_1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Produtos produtos = db.Produtos.Find(id);
-            db.Produtos.Remove(produtos);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            Produtos produto = db.Produtos.Find(id);
+			try
+			{
+				db.Produtos.Remove(produto);
+				db.SaveChanges();
+				return RedirectToAction("Index");
+			}
+			catch (Exception ex) {
+				ModelState.AddModelError("", string.Format("Não é possível apagar o Agente nº {0} - {1}, porque há multas associadas a ele...",
+										id, produto.NomeProduto));
+			}
+			return View(produto);
         }
 
         protected override void Dispose(bool disposing)
