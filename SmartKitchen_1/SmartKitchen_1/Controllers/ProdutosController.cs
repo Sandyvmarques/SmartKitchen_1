@@ -18,8 +18,8 @@ namespace SmartKitchen_1.Controllers
         // GET: Produtos
         public ActionResult Index()
         {
-            //var produto = db.Produtos.Include(p => p.Categoria);
-            return View(db.Produtos.ToList());
+            var listaDeProdutos = db.Produtos.OrderBy(p => p.Categoria).ToList();
+            return View(listaDeProdutos);
         }
 
         // GET: Produtos/Details/5
@@ -49,7 +49,7 @@ namespace SmartKitchen_1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Prod_ID,NomeProduto,Descricao,IVAVenda,PrecoVenda,Stock,CategoriasFK")] Produtos produtos)
+        public ActionResult Create([Bind(Include = "Prod_ID,NomeProduto,Descricao,IVAVenda,PrecoVenda,Stock,CategoriasFK")] Produtos produtos , HttpPostedFileBase [] uploadImagem)
         {
             if (ModelState.IsValid)
             {
