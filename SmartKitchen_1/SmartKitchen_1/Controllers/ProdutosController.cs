@@ -18,7 +18,7 @@ namespace SmartKitchen_1.Controllers
         // GET: Produtos
         public ActionResult Index()
         {
-            var listaDeProdutos = db.Produtos.OrderBy(p => p.Categoria).ToList();
+            var listaDeProdutos = db.Produtos.OrderBy(p => p.Categoria);
             return View(listaDeProdutos);
         }
 
@@ -85,12 +85,14 @@ namespace SmartKitchen_1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Prod_ID,NomeProduto,Descricao,IVAVenda,PrecoVenda,Stock,CategoriasFK")] Produtos produtos)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(produtos).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+			if (ModelState.IsValid)
+			{
+
+				db.Entry(produtos).State = EntityState.Modified;
+				db.SaveChanges();
+
+
+			}
             //ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produto.CategoriasFK);
             return View(produtos);
         }
