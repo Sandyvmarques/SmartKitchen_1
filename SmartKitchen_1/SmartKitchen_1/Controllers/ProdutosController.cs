@@ -52,31 +52,39 @@ namespace SmartKitchen_1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Prod_ID,NomeProduto,Descricao,IVAVenda,PrecoVenda,Stock,CategoriasFK")] Produtos produto, HttpPostedFileBase[] Uploadimagens)//para ter multiplas imagens faco um array e um ciclo for para ir buscar cada imagem. uma coisa q o vs faz por ti ex: produto.imgem.caminho
         {
-			//foreach (Uploadimagens=) {
-			//	//ID do novo produto 
-			//	int idNovoPoduto = db.Produtos.Max(a => a.Prod_ID) + 1;
-			//	//guarda o ID
-			//	produto.Prod_ID = idNovoPoduto;
+			foreach (HttpPostedFileBase Uploadimagem in Uploadimagens)
+			{
 
-			//	//escolher o nome do ficheiro 
-			//	string nomeImg = "Produto_" + idNovoPoduto + ".jpg";
+				string name = System.IO.Path.GetFileName(Uploadimagem.FileName);
+				Uploadimagem.SaveAs(Server.MapPath("~/Images/" + name));
 
-			//	//var auxiliar
-			//	string path = "";
+				string filename = "Images/" + name;
 
-			//	//validar se a img foi fornecida
-			//	if (Uploadimagens != null)
-			//	{
-			//		path = Path.Combine(Server.MapPath("~/imagens/"), nomeImg);
-			//		produto.ListaDeImagens = nomeImg;
-			//	}
-			//	else {
-			//		ModelState.AddModelError("", "No imagem");
+				//ID do novo produto 
+				int idNovoPoduto = db.Produtos.Max(a => a.Prod_ID) + 1;
+				//guarda o ID
+				produto.Prod_ID = idNovoPoduto;
 
-			//		return View(produto);
-			//	}
-			//}
-				if (ModelState.IsValid)
+				//escolher o nome do ficheiro 
+				string nomeImg = "Produto_" + idNovoPoduto + ".jpg";
+
+				//var auxiliar
+				string path = "";
+
+				//validar se a img foi fornecida
+				if (Uploadimagens != null)
+				{
+					path = Path.Combine(Server.MapPath("~/imagens/"), nomeImg);
+					produto.ListaDeImagens = nomeImg;
+				}
+				else
+				{
+					ModelState.AddModelError("", "No imagem");
+
+					return View(produto);
+				}
+			}
+			if (ModelState.IsValid)
             {
                 db.Produtos.Add(produto);
                 db.SaveChanges();
