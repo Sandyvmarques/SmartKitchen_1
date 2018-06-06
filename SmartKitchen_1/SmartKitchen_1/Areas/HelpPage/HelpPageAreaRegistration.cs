@@ -1,7 +1,7 @@
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace SmartKitchen_1.Areas.HelpPage
+namespace SmartKitchen_1Db.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace SmartKitchen_1.Areas.HelpPage
+namespace SmartKitchen_1Db.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

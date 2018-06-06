@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace SmartKitchen_1
+namespace SmartKitchen_1Db
 {
 	public static class WebApiConfig
 	{

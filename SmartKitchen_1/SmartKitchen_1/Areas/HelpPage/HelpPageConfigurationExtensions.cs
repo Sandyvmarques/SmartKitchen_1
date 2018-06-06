@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using SmartKitchen_1.Areas.HelpPage.ModelDescriptions;
-using SmartKitchen_1.Areas.HelpPage.Models;
+using SmartKitchen_1Db.Areas.HelpPage.ModelDescriptions;
+using SmartKitchen_1Db.Areas.HelpPage.Models;
 
-namespace SmartKitchen_1.Areas.HelpPage
+namespace SmartKitchen_1Db.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

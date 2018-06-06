@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace SmartKitchen_1.Controllers
+namespace SmartKitchen_1Db.Controllers
 {
 	public class ValuesController : ApiController
 	{

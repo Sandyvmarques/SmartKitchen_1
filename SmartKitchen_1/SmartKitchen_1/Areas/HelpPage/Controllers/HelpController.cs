@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using SmartKitchen_1.Areas.HelpPage.ModelDescriptions;
-using SmartKitchen_1.Areas.HelpPage.Models;
+using SmartKitchen_1Db.Areas.HelpPage.ModelDescriptions;
+using SmartKitchen_1Db.Areas.HelpPage.Models;
 
-namespace SmartKitchen_1.Areas.HelpPage.Controllers
+namespace SmartKitchen_1Db.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

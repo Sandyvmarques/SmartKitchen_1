@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace SmartKitchen_1
+namespace SmartKitchen_1Db
 {
 	public class BundleConfig
 	{

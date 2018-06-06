@@ -1,6 +1,6 @@
 using System;
 
-namespace SmartKitchen_1.Areas.HelpPage.ModelDescriptions
+namespace SmartKitchen_1Db.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

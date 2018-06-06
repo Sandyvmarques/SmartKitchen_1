@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace SmartKitchen_1
+namespace SmartKitchen_1Db
 {
 	public class WebApiApplication : System.Web.HttpApplication
 	{

@@ -1,4 +1,4 @@
-namespace SmartKitchen_1.Areas.HelpPage
+namespace SmartKitchen_1Db.Areas.HelpPage
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response

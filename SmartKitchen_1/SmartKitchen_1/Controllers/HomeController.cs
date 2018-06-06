@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SmartKitchen_1.Controllers
+namespace SmartKitchen_1Db.Controllers
 {
 	public class HomeController : Controller
 	{

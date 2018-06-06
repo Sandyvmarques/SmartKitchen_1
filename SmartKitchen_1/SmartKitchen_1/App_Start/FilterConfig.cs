@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace SmartKitchen_1
+namespace SmartKitchen_1Db
 {
 	public class FilterConfig
 	{

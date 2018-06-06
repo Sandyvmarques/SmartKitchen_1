@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace SmartKitchen_1.Areas.HelpPage.ModelDescriptions
+namespace SmartKitchen_1Db.Areas.HelpPage.ModelDescriptions
 {
     internal static class ModelNameHelper
     {

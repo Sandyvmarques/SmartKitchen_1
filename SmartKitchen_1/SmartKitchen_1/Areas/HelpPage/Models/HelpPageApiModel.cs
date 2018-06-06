@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
-using SmartKitchen_1.Areas.HelpPage.ModelDescriptions;
+using SmartKitchen_1Db.Areas.HelpPage.ModelDescriptions;
 
-namespace SmartKitchen_1.Areas.HelpPage.Models
+namespace SmartKitchen_1Db.Areas.HelpPage.Models
 {
     /// <summary>
     /// The model that represents an API displayed on the help page.

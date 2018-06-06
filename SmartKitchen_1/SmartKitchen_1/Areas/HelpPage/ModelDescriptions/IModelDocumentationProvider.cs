@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace SmartKitchen_1.Areas.HelpPage.ModelDescriptions
+namespace SmartKitchen_1Db.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {
