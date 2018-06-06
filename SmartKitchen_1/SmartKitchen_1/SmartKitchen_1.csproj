@@ -251,7 +251,6 @@
     <Compile Include="Models\Imagens.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Produtos.cs" />
-    <Compile Include="Models\SmartKitchen1Db.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

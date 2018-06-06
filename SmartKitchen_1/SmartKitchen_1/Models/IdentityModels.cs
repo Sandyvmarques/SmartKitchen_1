@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace IdentitySample.Models
+namespace SmartKitchen_1.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
@@ -36,5 +37,20 @@ namespace IdentitySample.Models
         {
             return new ApplicationDbContext();
         }
-    }
+		public virtual DbSet<Produtos> Produtos { get; set; }
+		public virtual DbSet<Categorias> Categorias { get; set; }
+		public virtual DbSet<Clientes> Clientes { get; set; }
+		public virtual DbSet<Encomendas> Encomendas { get; set; }
+		public virtual DbSet<Imagens> Imagens { get; set; }
+		public virtual DbSet<EncProd> EncProd { get; set; }
+
+
+
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		{
+			modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+			modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+			base.OnModelCreating(modelBuilder);
+		}
+	}
 }

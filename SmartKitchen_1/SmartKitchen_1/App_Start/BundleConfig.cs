@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace IdentitySample
+namespace SmartKitchen_1
 {
     public class BundleConfig
     {

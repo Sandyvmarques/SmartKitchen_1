@@ -7,13 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SmartKitchen_1.Models;
+using SmartKitchen_1.Models;
 
 
 namespace SmartKitchen_1.Controllers
 {
     public class ProdutosController : Controller
     {
-		private SmartKitchen1Db db = new SmartKitchen1Db();
+		private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Produtos
         public ActionResult Index()

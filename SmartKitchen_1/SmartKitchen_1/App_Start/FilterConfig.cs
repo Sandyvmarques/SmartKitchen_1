@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace IdentitySample
+namespace SmartKitchen_1
 {
     public class FilterConfig
     {

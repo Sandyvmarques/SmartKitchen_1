@@ -2,11 +2,11 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using IdentitySample.Models;
+using SmartKitchen_1.Models;
 using Owin;
 using System;
 
-namespace IdentitySample
+namespace SmartKitchen_1
 {
     public partial class Startup
     {

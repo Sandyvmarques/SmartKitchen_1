@@ -1,6 +1,6 @@
 ﻿using Owin;
 
-namespace IdentitySample
+namespace SmartKitchen_1
 {
     public partial class Startup
     {
