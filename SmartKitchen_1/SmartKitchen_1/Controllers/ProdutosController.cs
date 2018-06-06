@@ -27,14 +27,14 @@ namespace SmartKitchen_1.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Produtos produtos = db.Produtos.Find(id);
+				return RedirectToAction("Index");
+			}
+			Produtos produtos = db.Produtos.Find(id);
             if (produtos == null)
             {
-                return HttpNotFound();
-            }
-            return View(produtos);
+				return RedirectToAction("Index");
+			}
+			return View(produtos);
         }
 
         // GET: Produtos/Create
@@ -67,15 +67,15 @@ namespace SmartKitchen_1.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Produtos produtos = db.Produtos.Find(id);
+				return RedirectToAction("Index");
+			}
+			Produtos produtos = db.Produtos.Find(id);
             if (produtos == null)
             {
-                return HttpNotFound();
-            }
-            //ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produtos.CategoriasFK);
-            return View(produtos);
+				return RedirectToAction("Index");
+			}
+			//ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produtos.CategoriasFK);
+			return View(produtos);
         }
 
         // POST: Produtos/Edit/5
@@ -100,14 +100,14 @@ namespace SmartKitchen_1.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Produtos produtos = db.Produtos.Find(id);
+				return RedirectToAction("Index");
+			}
+			Produtos produtos = db.Produtos.Find(id);
             if (produtos == null)
             {
-                return HttpNotFound();
-            }
-            return View(produtos);
+				return RedirectToAction("Index");
+			}
+			return View(produtos);
         }
 
         // POST: Produtos/Delete/5
