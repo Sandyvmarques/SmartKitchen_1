@@ -28,13 +28,13 @@ namespace SmartKitchen_1.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+                return RedirectToAction("Index");
+			}
             Produtos produtos = db.Produtos.Find(id);
             if (produtos == null)
             {
-                return HttpNotFound();
-            }
+				return RedirectToAction("Index");
+			}
             return View(produtos);
         }
 
@@ -54,8 +54,13 @@ namespace SmartKitchen_1.Controllers
         {
 			//foreach (Uploadimagens=) {
 			//	//ID do novo produto 
+			// int idNovoPoduto=0;
+			//try { 
 			//	int idNovoPoduto = db.Produtos.Max(a => a.Prod_ID) + 1;
-			//	//guarda o ID
+			//}
+			//catch(Exception){ idNovoPoduto=1;
+			//				}
+			//guarda o ID
 			//	produto.Prod_ID = idNovoPoduto;
 
 			//	//escolher o nome do ficheiro 
@@ -76,11 +81,17 @@ namespace SmartKitchen_1.Controllers
 			//		return View(produto);
 			//	}
 			//}
-				if (ModelState.IsValid)
+			if (ModelState.IsValid)
             {
-                db.Produtos.Add(produto);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+				try
+				{
+					db.Produtos.Add(produto);
+					db.SaveChanges();
+					return RedirectToAction("Index");
+				}
+				catch (Exception) {
+					ModelState.AddModelError("", "Error occured during the creation of a new product");
+				}
             }
 
             //ViewBag.CategoriasFK = new SelectList(db.Categorias, "Cat_ID", "NomeCateg", produto.CategoriasFK);
@@ -125,14 +136,14 @@ namespace SmartKitchen_1.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Produtos produtos = db.Produtos.Find(id);
+				return RedirectToAction("Index");
+			}
+			Produtos produtos = db.Produtos.Find(id);
             if (produtos == null)
             {
-                return HttpNotFound();
-            }
-            return View(produtos);
+				return RedirectToAction("Index");
+			}
+			return View(produtos);
         }
 
         // POST: Produtos/Delete/5
