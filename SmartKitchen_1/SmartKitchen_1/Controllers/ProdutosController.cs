@@ -123,7 +123,7 @@ namespace SmartKitchen_1.Controllers
 				return RedirectToAction("Index");
 			}
 			catch (Exception ex) {
-				ModelState.AddModelError("", string.Format("Não é possível apagar o Agente nº {0} - {1}, porque há multas associadas a ele...",
+				ModelState.AddModelError("", string.Format("Its not possible to delete the Product nº {0} - {1}",
 										id, produto.NomeProduto));
 			}
 			return View(produto);
