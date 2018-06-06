@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace SmartKitchen.Models
+namespace SmartKitchen_1.Models
 {
     public class Encomendas
     {

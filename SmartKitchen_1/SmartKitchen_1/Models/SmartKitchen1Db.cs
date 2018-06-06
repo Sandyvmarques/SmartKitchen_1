@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
 using System.Web;
-using SmartKitchen.Models;
+
 
 namespace SmartKitchen_1.Models
 {
-	public class SmartKitchen_1Db : DbContext{
+	public class SmartKitchen1Db : DbContext{
 
-		public SmartKitchen_1Db() : base("name=SmartKitchen_1DbConnectionString") { }
+		public SmartKitchen1Db() : base("name=SmartKitchen1DbConnectionString") { }
 
 		public virtual DbSet<Produtos> Produtos { get; set; }
 		public virtual DbSet<Categorias> Categorias { get; set; }
